@@ -4,6 +4,12 @@ import { Menu, Input, Row, Col } from "antd";
 import { useState } from "react";
 import UserProfile from "./UserProfile";
 import LoginForm from "./LoginForm";
+import styled from "styled-components";
+
+// antd의 컴포넌트 css 커스텀
+const SearchInput = styled(Input.Search)`
+  vertical-align: middle;
+`;
 
 const AppLayout = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -21,7 +27,7 @@ const AppLayout = ({ children }) => {
           </Link>
         </Menu.Item>
         <Menu.Item>
-          <Input.Search enterButton style={{ verticalAlign: "middle" }} />
+          <SearchInput enterButton />
           <Link href="/signup">
             <a>회원가입</a>
           </Link>

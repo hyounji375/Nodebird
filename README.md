@@ -73,3 +73,13 @@ styled-components를 할 줄 알면 emotion도 금방 배운다.
 
 1. 로그인 폼 같은 거는 react-form과 같은 라이브러리를 사용하면 편하게 만들 수 있다.
 2. 컴포넌트에 props로 넘겨주는 함수는 useCallback을 꼭 사용해야 최적화가 된다.
+
+섹션1 -5
+
+1. div 태그에 인라인 스타일로 css를 주면 리액트에서는 그 부분을 리렌더링 한다.
+   왜냐하면 처음의 {{styled : ""}} 이 객체와 새로 만들어진 {{styled : ""}} 객체가 다르기 때문이다.({}==={} => false)
+   따라서 최적화에 영향을 주게 된다.
+
+   인라인 css 대신 styled-components를 쓰거나 useMemo를 이용할 수도 있다.
+   ex) const style = useMemo(()=>({marginTop : 10}),[]);
+   <div style={style}></div>
