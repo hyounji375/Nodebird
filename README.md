@@ -48,3 +48,8 @@
 1.emotion
 : SSR 할 때 조금 편하다.
 styled-components를 할 줄 알면 emotion도 금방 배운다.
+
+섹션1 - 2
+
+1. Next에서는 html의 head를 수정할 수 있는 Head라는 컴포넌트를 제공한다.
+   Head 컴포넌트를 사용하여 title 수정 등이 가능하다.
