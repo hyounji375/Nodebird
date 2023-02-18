@@ -72,7 +72,7 @@ styled-components를 할 줄 알면 emotion도 금방 배운다.
 섹션1 - 4
 
 1. 로그인 폼 같은 거는 react-form과 같은 라이브러리를 사용하면 편하게 만들 수 있다.
-2. 컴포넌트에 props로 넘겨주는 함수는 useCallback을 꼭 사용해야 최적화가 된다.
+2. 컴포넌트에 props로 넘겨주는 함수는 useCallback을 사용해야 최적화가 된다.
 
 섹션1 -5
 
