@@ -88,3 +88,9 @@ styled-components를 할 줄 알면 emotion도 금방 배운다.
 
 1. 리액트에서 배열로 JSX를 쓸 때는 key를 붙여줘야 한다.
    ex) UserProfile.js의 <Card actions=[]> 부분
+
+섹션1-7
+
+1. rel="noreferrer noopener" : 새 창을 누가 어디서 열였는지에 대한 정보를 없애버리는 것.
+2. 크롬 웹스토어 -> React Developer Tools, Redux DevTools
+3. echarts : 차트 라이브러리
