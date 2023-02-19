@@ -36,7 +36,11 @@ const AppLayout = ({ children }) => {
       <Row gutter={8}>
         {/* gutter : 컬럼 사이에 간격을 주는 것 */}
         <Col xs={24} md={6}>
-          {isLoggedIn ? <UserProfile /> : <LoginForm />}
+          {isLoggedIn ? (
+            <UserProfile setIsLoggedIn={setIsLoggedIn} />
+          ) : (
+            <LoginForm setIsLoggedIn={setIsLoggedIn} />
+          )}
         </Col>
         <Col xs={24} md={12}>
           {children}
