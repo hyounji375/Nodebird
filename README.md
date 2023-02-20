@@ -94,3 +94,14 @@ styled-components를 할 줄 알면 emotion도 금방 배운다.
 1. rel="noreferrer noopener" : 새 창을 누가 어디서 열였는지에 대한 정보를 없애버리는 것.
 2. 크롬 웹스토어 -> React Developer Tools, Redux DevTools
 3. echarts : 차트 라이브러리
+
+섹션2-1
+
+1. 리덕스 : 중앙 데이터 저장소 같은 느낌.
+   여기에 데이터를 저장해 놓고 여러 컴포넌트에서 가져다 쓴다.
+   ex) contextAPI, redux, mobx, apollo 등
+   - redux : 코드량이 많다.
+     에러가 잘 나지 않으며 추적이 쉽다.
+   - mobx : 코드량이 적다.
+     에러 추적이 어렵다.
+   - contextAPI : 서버 비동기 처리 시 요청, 성공, 실패 로직 구현이 어렵다.
