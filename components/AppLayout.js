@@ -1,10 +1,10 @@
 import propTypes from "prop-types";
 import Link from "next/link";
 import { Menu, Input, Row, Col } from "antd";
-import { useState } from "react";
 import UserProfile from "./UserProfile";
 import LoginForm from "./LoginForm";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 // antd의 컴포넌트 css 커스텀
 const SearchInput = styled(Input.Search)`
@@ -12,7 +12,7 @@ const SearchInput = styled(Input.Search)`
 `;
 
 const AppLayout = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   return (
     <div>
       <Menu mode="horizontal">
@@ -36,11 +36,7 @@ const AppLayout = ({ children }) => {
       <Row gutter={8}>
         {/* gutter : 컬럼 사이에 간격을 주는 것 */}
         <Col xs={24} md={6}>
-          {isLoggedIn ? (
-            <UserProfile setIsLoggedIn={setIsLoggedIn} />
-          ) : (
-            <LoginForm setIsLoggedIn={setIsLoggedIn} />
-          )}
+          {isLoggedIn ? <UserProfile /> : <LoginForm />}
         </Col>
         <Col xs={24} md={12}>
           {children}
