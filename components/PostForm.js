@@ -6,8 +6,10 @@ import { addPost } from "../reducers/post";
 const PostForm = () => {
   const { imagePaths } = useSelector((state) => state.post);
   const dispatch = useDispatch();
+
   const imageInput = useRef();
   const [text, setText] = useState("");
+
   const onChangeText = useCallback((e) => {
     setText(e.target.value);
   }, []);
