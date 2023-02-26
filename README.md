@@ -117,3 +117,10 @@ styled-components를 할 줄 알면 emotion도 금방 배운다.
    version.5에서는 import { Comment } from '@ant-design/compatible' 이렇게 바뀜.
 2. antd에서 지원하는 Menu 사용법 달라짐.
    AppLayout.js 참고
+
+섹션 2-9
+
+1. 화면을 꽉 채우려면 top, left, right, bottom을 다 0으로 주면 된다.
+2. styled.div`에서 `는 함수를 호출할 때 쓰이는 문법이며 자바스크립트에서도 사용 가능하다.
+   foo() 이런 식으로 함수 호출하는 게 foo` 이렇게도 된다는 의미.
+따라서 styled.div`는 styled.div 함수를 호출한 것이다.

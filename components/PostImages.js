@@ -1,11 +1,16 @@
 import { PlusOutlined } from "@ant-design/icons";
 import PropTypes from "prop-types";
 import { useCallback, useState } from "react";
+import ImagesZoom from "./ImagesZoom";
 
 const PostImages = ({ images }) => {
   const [showImagesZoom, setShowImagesZoom] = useState(false);
   const onZoom = useCallback(() => {
     setShowImagesZoom(true);
+  }, []);
+
+  const onClose = useCallback(() => {
+    setShowImagesZoom(false);
   }, []);
 
   // PostCard에서 post.Images[0] && <PostImages images={post.Images} /> 이렇게 적었기 때문에 이미지가 0개일 때는 적지 않음.
@@ -19,6 +24,7 @@ const PostImages = ({ images }) => {
           onClick={onZoom}
         />
         {/* role="presentation"을 넣어주면 스크린 리더기가 이건 input이나 button처럼 굳이 클릭할 필요가 없다고 알려줌. */}
+        {showImagesZoom && <ImagesZoom images={images} onClose={onClose} />}
       </>
     );
   }
@@ -39,6 +45,7 @@ const PostImages = ({ images }) => {
           alt={images[1].src}
           onClick={onZoom}
         />
+        {showImagesZoom && <ImagesZoom images={images} onClose={onClose} />}
       </>
     );
   }
@@ -67,6 +74,7 @@ const PostImages = ({ images }) => {
           {images.length - 1}개의 사진 더 보기
         </div>
       </div>
+      {showImagesZoom && <ImagesZoom images={images} onClose={onClose} />}
     </>
   );
 };
