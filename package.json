@@ -9,6 +9,7 @@
   "author": "Editha",
   "license": "ISC",
   "dependencies": {
+    "@ant-design/compatible": "^5.1.1",
     "@ant-design/icons": "^5.0.1",
     "antd": "^5.2.1",
     "next": "^9.5.5",

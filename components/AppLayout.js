@@ -13,26 +13,39 @@ const SearchInput = styled(Input.Search)`
 
 const AppLayout = ({ children }) => {
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
-  return (
-    <div>
-      <Menu mode="horizontal">
-        <Menu.Item>
-          <Link href="/">
-            <a>노드버드</a>
-          </Link>
-        </Menu.Item>
-        <Menu.Item>
-          <Link href="/profile">
-            <a>프로필</a>
-          </Link>
-        </Menu.Item>
-        <Menu.Item>
+  const menuItems = [
+    {
+      label: (
+        <Link href="/">
+          <a>노드버드</a>
+        </Link>
+      ),
+      key: "노드버드",
+    },
+    {
+      label: (
+        <Link href="/profile">
+          <a>프로필</a>
+        </Link>
+      ),
+      key: "프로필",
+    },
+    {
+      label: (
+        <>
           <SearchInput enterButton />
           <Link href="/signup">
             <a>회원가입</a>
           </Link>
-        </Menu.Item>
-      </Menu>
+        </>
+      ),
+      key: "회원가입",
+    },
+  ];
+
+  return (
+    <div>
+      <Menu mode="horizontal" items={menuItems} />
       <Row gutter={8}>
         {/* gutter : 컬럼 사이에 간격을 주는 것 */}
         <Col xs={24} md={6}>

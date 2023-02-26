@@ -109,3 +109,9 @@ styled-components를 할 줄 알면 emotion도 금방 배운다.
 섹션 2-7
 
 1. 배열 안에 jsx를 넣을 때는 항상 key를 줘야한다.
+
+섹션 2-8
+
+1. antd에서 지원하는 Comment 컴포넌트 import 하는 방법이 달라짐.
+   version.4에서는 import {Comment } from 'antd'; 이렇게 했지만
+   version.5에서는 import { Comment } from '@ant-design/compatible' 이렇게 바뀜.
