@@ -1,7 +1,74 @@
+import { PlusOutlined } from "@ant-design/icons";
 import PropTypes from "prop-types";
+import { useCallback, useState } from "react";
 
 const PostImages = ({ images }) => {
-  return <div>구현 중</div>;
+  const [showImagesZoom, setShowImagesZoom] = useState(false);
+  const onZoom = useCallback(() => {
+    setShowImagesZoom(true);
+  }, []);
+
+  // PostCard에서 post.Images[0] && <PostImages images={post.Images} /> 이렇게 적었기 때문에 이미지가 0개일 때는 적지 않음.
+  if (images.length === 1) {
+    return (
+      <>
+        <img
+          role="presentation"
+          src={images[0].src}
+          alt={images[0].src}
+          onClick={onZoom}
+        />
+        {/* role="presentation"을 넣어주면 스크린 리더기가 이건 input이나 button처럼 굳이 클릭할 필요가 없다고 알려줌. */}
+      </>
+    );
+  }
+  if (images.length === 2) {
+    return (
+      <>
+        <img
+          role="presentation"
+          style={{ width: "50%", display: "inline-block" }}
+          src={images[0].src}
+          alt={images[0].src}
+          onClick={onZoom}
+        />
+        <img
+          role="presentation"
+          style={{ width: "50%", display: "inline-block" }}
+          src={images[1].src}
+          alt={images[1].src}
+          onClick={onZoom}
+        />
+      </>
+    );
+  }
+  return (
+    <>
+      <div>
+        <img
+          role="presentation"
+          style={{ width: "50%" }}
+          src={images[0].src}
+          alt={images[0].src}
+          onClick={onZoom}
+        />
+        <div
+          role="presentation"
+          style={{
+            display: "inline-block",
+            width: "50%",
+            textAlign: "center",
+            verticalAlign: "middle",
+          }}
+          onClick={onZoom}
+        >
+          <PlusOutlined />
+          <br />
+          {images.length - 1}개의 사진 더 보기
+        </div>
+      </div>
+    </>
+  );
 };
 
 PostImages.propTypes = {
