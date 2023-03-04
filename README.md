@@ -137,3 +137,19 @@ styled-components를 할 줄 알면 emotion도 금방 배운다.
    - .은 글자 한 개를 의미. .이 3개면 3글자, .+는 모든 글자
    - []는 [] 안에 들어 있는 글자를 선택. 이 안에 ^를 붙여주면 그 글자를 제외
    - 공백은 \s로 표시
+
+섹션 3-2
+
+1. 제너레이터 함수는 yield가 있는 곳에서 멈춘다.  
+   yield 뒤에 값을 넣어주면 그 값이 value로 return 된다.
+2. let i = 0;
+   const gen = function\*() {
+   while (true) {
+   yield i++;
+   }
+   }
+   const g = gen();
+   g.next() => value = 0;
+   g.next() => value = 1;
+   g.next() => value = 2;
+   ...
