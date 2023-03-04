@@ -1,5 +1,7 @@
 export const initialState = {
+  isLoggingIn: false, //로그인 시도 중(true면 로딩창 띄우는 용도)
   isLoggedIn: false,
+  isLoggingOut: false, //로그아웃 시도 중
   me: null,
   signUpData: {},
   loginData: {},
@@ -26,52 +28,49 @@ export const loginRequestAction = (data) => {
   };
 };
 
-export const loginSuccessAction = (data) => {
-  return {
-    type: "LOGIN_SUCCESS",
-    data,
-  };
-};
-
-export const loginFailureAction = (data) => {
-  return {
-    type: "LOGIN_FAILURE",
-    data,
-  };
-};
-
 export const logoutRequestAction = (data) => {
   return {
     type: "LOGOUT_REQUEST",
   };
 };
 
-export const logoutSuccessAction = (data) => {
-  return {
-    type: "LOGOUT_SUCCESS",
-  };
-};
-
-export const logoutFailureAction = (data) => {
-  return {
-    type: "LOGOUT_FAILURE",
-  };
-};
-
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "LOG_IN":
+    case "LOGIN_REQUEST":
       return {
         ...state,
+        isLoggingIn: true,
+      };
+    case "LOGIN_SUCCESS":
+      return {
+        ...state,
+        isLoggingIn: false,
         isLoggedIn: true,
-        me: action.data,
+        me: { ...action.data, nickname: "editha" },
+      };
+    case "LOGIN_FAILURE":
+      return {
+        ...state,
+        isLoggingIn: false,
+        isLoggedIn: false,
       };
 
-    case "LOG_OUT":
+    case "LOGOUT_REQUEST":
       return {
         ...state,
+        isLoggingOut: true,
+      };
+    case "LOGOUT_SUCCESS":
+      return {
+        ...state,
+        isLoggingOut: false,
         isLoggedIn: false,
         me: null,
+      };
+    case "LOGOUT_FAILURE":
+      return {
+        ...state,
+        isLoggingOut: false,
       };
     default:
       return state;
