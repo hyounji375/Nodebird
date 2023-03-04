@@ -159,3 +159,13 @@ styled-components를 할 줄 알면 emotion도 금방 배운다.
 1. fork : 비동기 함수 호출
    call : 동기 함수 호출
    call(함수, 매개변수들) ex) call(loginAPI, action.data, a, b) => action.data, a, b 모두 매개변수
+
+섹션 3-4
+
+1. take : 액션을 한 번밖에 실행을 안 한다. 그러면 로그인도 딱 한 번밖에 못 하고 게시글도 딱 한 번밖에 못 쓰게 된다.
+2. takeEvery : take는 한 번밖에 못 쓰니까 takeEvery 사용.
+3. takeLatest : 여러 번 클릭했을 때 마지막 요청만 실행.
+   프론트에서 가는 요청을 취소하는 게 아니라 여러 번 클릭한 것에 따른 여러 번의 요청이 가고, 서버에서 오는 여러 번의 응답 중 마지막 것만 남기고 나머지는 취소하는 방식.
+4. takeLeading : takeLatest와 반대로 맨 처음 요청만 실행.
+5. throttle : throttle("ADD_POST_REQUEST", addPost, 2000) => 2초 동안 ADD_POST_REQUEST를 딱 한 번만 실행할 수 있다.
+   요청 보내는 것에 시간 제한을 두는 방식.

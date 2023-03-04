@@ -1,4 +1,4 @@
-import { all, call, fork, take, put } from "redux-saga/effects";
+import { all, call, delay, fork, put, takeLatest } from "redux-saga/effects";
 import axios from "axios";
 
 function loginAPI(data) {
@@ -8,7 +8,8 @@ function loginAPI(data) {
 
 function* login(action) {
   try {
-    const result = yield call(loginAPI, action.data);
+    // const result = yield call(loginAPI, action.data);
+    yield delay(1000);
     //  서버에 요청을 보낸 결과를 받음
     // put은 dispatch라고 생각하면 됨
     // call을 하면 loginAPI가 return할 때까지 기다려서 값을 result에 넣어줌.
@@ -31,7 +32,8 @@ function logoutAPI() {
 
 function* logout() {
   try {
-    const result = yield call(logoutAPI);
+    // const result = yield call(logoutAPI);
+    yield delay(1000);
     yield put({
       type: "LOGOUT_SUCCESS",
       data: result.data,
@@ -50,7 +52,8 @@ function addPostAPI(data) {
 
 function* addPost(action) {
   try {
-    const result = yield call(addPostAPI, action.data);
+    // const result = yield call(addPostAPI, action.data);
+    yield delay(1000);
     yield put({
       type: "ADD_POST_SUCCESS",
       data: result.data,
@@ -64,17 +67,17 @@ function* addPost(action) {
 }
 
 function* watchLogin() {
-  yield take("LOGIN_REQUEST", login);
+  yield takeLatest("LOGIN_REQUEST", login);
   //   LOGIN이라는 액션이 실행될 때까지 기다리겠다.
   // LOGIN이라는 액션이 실행되면 login을 실행한다.
 }
 
 function* watchLogout() {
-  yield take("LOGOUT_REQUEST", logout);
+  yield takeLatest("LOGOUT_REQUEST", logout);
 }
 
 function* watchAddPost() {
-  yield take("ADD_POST_REQUEST", addPost);
+  yield takeLatest("ADD_POST_REQUEST", addPost);
 }
 
 export default function* rootSaga() {
