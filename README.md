@@ -153,3 +153,9 @@ styled-components를 할 줄 알면 emotion도 금방 배운다.
    g.next() => value = 1;
    g.next() => value = 2;
    ...
+
+섹션 3-3
+
+1. fork : 비동기 함수 호출
+   call : 동기 함수 호출
+   call(함수, 매개변수들) ex) call(loginAPI, action.data, a, b) => action.data, a, b 모두 매개변수
