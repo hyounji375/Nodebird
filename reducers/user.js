@@ -1,9 +1,18 @@
 export const initialState = {
-  isLoggingIn: false, //로그인 시도 중(true면 로딩창 띄우는 용도)
-  isLoggedIn: false,
-  isLoggingOut: false, //로그아웃 시도 중
+  loginLoading: false,
+  loginDone: false,
+  loginError: null,
+
+  logoutLoading: false,
+  logoutDone: false,
+  logoutError: null,
+
+  signupLoading: false,
+  signupDone: false,
+  signupError: null,
+
   me: null,
-  signUpData: {},
+  signupData: {},
   loginData: {},
 };
 // redux-thunk
@@ -21,56 +30,110 @@ export const initialState = {
 //   }
 // }
 
+export const LOGIN_REQUEST = "LOGIN_REQUEST";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILURE = "LOGIN_FAILURE";
+
+export const LOGOUT_REQUEST = "LOGOUT_REQUEST";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const LOGOUT_FAILURE = "LOGOUT_FAILURE";
+
+export const SIGNUP_REQUEST = "SIGNUP_REQUEST";
+export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
+export const SIGNUP_FAILURE = "SIGNUP_FAILURE";
+
+export const FOLLOW_REQUEST = "FOLLOW_REQUEST";
+export const FOLLOW_SUCCESS = "FOLLOW_SUCCESS";
+export const FOLLOW_FAILURE = "FOLLOW_FAILURE";
+
+export const UNFOLLOW_REQUEST = "UNFOLLOW_REQUEST";
+export const UNFOLLOW_SUCCESS = "UNFOLLOW_SUCCESS";
+export const UNFOLLOW_FAILURE = "UNFOLLOW_FAILURE";
+
+const dummyUser = (data) => ({
+  ...data,
+  nickname: "editha",
+  id: 1,
+  Posts: [],
+  Followings: [],
+  Followers: [],
+});
+
 export const loginRequestAction = (data) => {
   return {
-    type: "LOGIN_REQUEST",
+    type: LOGIN_REQUEST,
     data,
   };
 };
 
 export const logoutRequestAction = (data) => {
   return {
-    type: "LOGOUT_REQUEST",
+    type: LOGOUT_REQUEST,
   };
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "LOGIN_REQUEST":
+    case LOGIN_REQUEST:
       return {
         ...state,
-        isLoggingIn: true,
+        loginLoading: true,
+        loginDone: false,
+        loginError: null,
       };
-    case "LOGIN_SUCCESS":
+    case LOGIN_SUCCESS:
       return {
         ...state,
-        isLoggingIn: false,
-        isLoggedIn: true,
-        me: { ...action.data, nickname: "editha" },
+        loginLoading: false,
+        loginDone: true,
+        me: dummyUser(action.data),
       };
-    case "LOGIN_FAILURE":
+    case LOGIN_FAILURE:
       return {
         ...state,
-        isLoggingIn: false,
-        isLoggedIn: false,
+        loginLoading: false,
+        loginError: action.error,
       };
 
-    case "LOGOUT_REQUEST":
+    case LOGOUT_REQUEST:
       return {
         ...state,
-        isLoggingOut: true,
+        logoutLoading: true,
+        logoutDone: false,
+        logoutError: null,
       };
-    case "LOGOUT_SUCCESS":
+    case LOGOUT_SUCCESS:
       return {
         ...state,
-        isLoggingOut: false,
-        isLoggedIn: false,
+        logoutLoading: false,
+        logoutDone: true,
         me: null,
       };
-    case "LOGOUT_FAILURE":
+    case LOGOUT_FAILURE:
       return {
         ...state,
-        isLoggingOut: false,
+        logoutLoading: false,
+        logoutError: action.error,
+      };
+
+    case SIGNUP_REQUEST:
+      return {
+        ...state,
+        signupLoading: true,
+        signupDone: false,
+        signupError: null,
+      };
+    case SIGNUP_SUCCESS:
+      return {
+        ...state,
+        signupLoading: false,
+        signupDone: true,
+      };
+    case SIGNUP_FAILURE:
+      return {
+        ...state,
+        signupLoading: false,
+        signupError: action.error,
       };
     default:
       return state;
