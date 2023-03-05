@@ -7,15 +7,18 @@ import {
   EllipsisOutlined,
   HeartTwoTone,
 } from "@ant-design/icons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import PostImages from "./PostImages";
 import CommentForm from "./CommentForm";
 import PostCardContent from "./PostCardContent";
 import { useCallback, useState } from "react";
+import { REMOVE_POST_REQUEST } from "../reducers/post";
 
 const PostCard = ({ post }) => {
+  const dispatch = useDispatch();
   const { me } = useSelector((state) => state.user);
+  const { removePostLoading } = useSelector((state) => state.post);
   const id = me?.id;
   //   const id=me&&me.id 이거랑 같은 뜻. me.id가 있으면 그 값이 들어가고 없으면 undefined 넣어주는 optional chainning 연산자.
   // const {id}=useSelector((state)=>state.user.me?.id); 이렇게 한 줄로 적어줄 수도 있다.
@@ -30,6 +33,13 @@ const PostCard = ({ post }) => {
 
   const onToggleComment = useCallback(() => {
     setCommentFormOpened((prev) => !prev);
+  }, []);
+
+  const onRemovePost = useCallback(() => {
+    dispatch({
+      type: REMOVE_POST_REQUEST,
+      data: post.id,
+    });
   }, []);
 
   return (
@@ -56,7 +66,13 @@ const PostCard = ({ post }) => {
                 {id && post.User.id === id ? (
                   <>
                     <Button>수정</Button>
-                    <Button type="danger">삭제</Button>
+                    <Button
+                      type="danger"
+                      loading={removePostLoading}
+                      onClick={onRemovePost}
+                    >
+                      삭제
+                    </Button>
                   </>
                 ) : (
                   <Button>신고</Button>

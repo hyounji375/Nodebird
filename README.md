@@ -173,3 +173,8 @@ styled-components를 할 줄 알면 emotion도 금방 배운다.
 섹션 3-5
 
 1. input type="email"을 해주면 html에서 이메일 검사를 해준다.
+
+섹션 3-9
+
+1. saga는 액션을 여러 번 dispatch 할 수 있다.
+   예를 들어 게시글을 쓰면 post reducer 액션으로 게시글 추가하고 user reducer 액션으로 내가 쓴 게시글의 수를 증가시킬 수 있다.
