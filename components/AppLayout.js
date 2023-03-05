@@ -25,7 +25,7 @@ const Global = createGlobalStyle`
 `;
 
 const AppLayout = ({ children }) => {
-  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+  const { me } = useSelector((state) => state.user);
   const menuItems = [
     {
       label: (
@@ -63,7 +63,7 @@ const AppLayout = ({ children }) => {
       <Row gutter={8}>
         {/* gutter : 컬럼 사이에 간격을 주는 것 */}
         <Col xs={24} md={6}>
-          {isLoggedIn ? <UserProfile /> : <LoginForm />}
+          {me ? <UserProfile /> : <LoginForm />}
         </Col>
         <Col xs={24} md={12}>
           {children}

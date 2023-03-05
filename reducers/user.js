@@ -135,8 +135,11 @@ const reducer = (state = initialState, action) => {
         signupLoading: false,
         signupError: action.error,
       };
-    default:
-      return state;
+    default: {
+      return {
+        ...state,
+      };
+    }
   }
 };
 export default reducer;

@@ -1,23 +1,26 @@
 import { Button, Form, Input } from "antd";
-import { useCallback, useState, useRef } from "react";
+import { useCallback, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import useinput from "../hooks/useinput";
 import { addPost } from "../reducers/post";
 
 const PostForm = () => {
-  const { imagePaths } = useSelector((state) => state.post);
+  const { imagePaths, addPostDone } = useSelector((state) => state.post);
   const dispatch = useDispatch();
 
+  const [text, onChangeText, setText] = useinput("");
   const imageInput = useRef();
-  const [text, setText] = useState("");
 
-  const onChangeText = useCallback((e) => {
-    setText(e.target.value);
-  }, []);
+  useEffect(() => {
+    if (addPostDone) {
+      setText("");
+    }
+    // 게시글 추가 요청이 성공하고 나서 초기화 해주기
+  }, [addPostDone]);
 
   const onSubmit = useCallback(() => {
-    dispatch(addPost);
-    setText("");
-  }, []);
+    dispatch(addPost(text));
+  }, [text]);
 
   const onClickImageUpload = useCallback(() => {
     imageInput.current.click();

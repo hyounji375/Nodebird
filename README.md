@@ -169,3 +169,7 @@ styled-components를 할 줄 알면 emotion도 금방 배운다.
 4. takeLeading : takeLatest와 반대로 맨 처음 요청만 실행.
 5. throttle : throttle("ADD_POST_REQUEST", addPost, 2000) => 2초 동안 ADD_POST_REQUEST를 딱 한 번만 실행할 수 있다.
    요청 보내는 것에 시간 제한을 두는 방식.
+
+섹션 3-5
+
+1. input type="email"을 해주면 html에서 이메일 검사를 해준다.
