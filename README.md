@@ -178,3 +178,7 @@ styled-components를 할 줄 알면 emotion도 금방 배운다.
 
 1. saga는 액션을 여러 번 dispatch 할 수 있다.
    예를 들어 게시글을 쓰면 post reducer 액션으로 게시글 추가하고 user reducer 액션으로 내가 쓴 게시글의 수를 증가시킬 수 있다.
+
+섹션 3-10
+
+1. reducer : 불변성을 지키면서 이전 상태를 액션을 통해 다음 상태로 만들어주는 함수
