@@ -182,3 +182,7 @@ styled-components를 할 줄 알면 emotion도 금방 배운다.
 섹션 3-10
 
 1. reducer : 불변성을 지키면서 이전 상태를 액션을 통해 다음 상태로 만들어주는 함수
+
+섹션 3-11
+
+1. Placeholder.com : 이미지 공간을 확보하기 위한 라이브러리
